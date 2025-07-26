@@ -1,0 +1,2 @@
+
+# freispace analytics MCP server
