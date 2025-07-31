@@ -49,8 +49,6 @@ const createMethod = (method: HttpMethod) => {
       ...options.headers,
     };
 
-    console.log("BASE_URL", BASE_URL);
-
     const response = await fetch(`${BASE_URL}${endpoint}`, {
       ...options,
       method,
@@ -58,7 +56,12 @@ const createMethod = (method: HttpMethod) => {
       ...(data ? { body: JSON.stringify(data) } : {}),
     });
 
-    console.log("response", response);
+    if (!response.ok) {
+      throw new Error(
+        `HTTP error! status: ${response.status}, message: ${await response.text()}`,
+      );
+    }
+
     return { status: response.status, data: (await response.json()) as T };
   };
 };

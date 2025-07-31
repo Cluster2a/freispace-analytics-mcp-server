@@ -9,7 +9,7 @@ setupJsonConsole();
 
 const VERSION = "0.0.46";
 const server = new McpServer({
-  name: "21st-magic",
+  name: "freispace",
   version: VERSION,
 });
 

@@ -1,6 +1,6 @@
 {
   "name": "@freispace/analytics-mcp-server",
-  "version": "1.0.0",
+  "version": "1.0.6",
   "description": "A Model Context Protocol server for analytical queries on the freispace platform.",
   "license": "MIT",
   "author": "freispace GmbH (https://freispace.com)",
