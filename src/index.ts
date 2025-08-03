@@ -11,7 +11,7 @@ import { setupJsonConsole } from "./utils/console.js";
 
 setupJsonConsole();
 
-const VERSION = "1.0.8";
+const VERSION = "1.0.9";
 const server = new McpServer({
   name: "freispace",
   version: VERSION,
