@@ -4,6 +4,9 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { GetStaffsTool } from "./tools/get-staffs.js";
 import { StaffsWorkedTogetherTool } from "./tools/staffs-worked-toghether.js";
+import { StaffAnalysisPrompt } from "./prompts/staff-analysis.js";
+import { CollaborationInsightsPrompt } from "./prompts/collaboration-insights.js";
+import { ReportGenerationPrompt } from "./prompts/report-generation.js";
 import { setupJsonConsole } from "./utils/console.js";
 
 setupJsonConsole();
@@ -17,6 +20,11 @@ const server = new McpServer({
 // Register tools
 new GetStaffsTool().register(server);
 new StaffsWorkedTogetherTool().register(server);
+
+// Register prompts
+new StaffAnalysisPrompt().register(server);
+new CollaborationInsightsPrompt().register(server);
+new ReportGenerationPrompt().register(server);
 
 async function runServer() {
   const transport = new StdioServerTransport();
