@@ -24,6 +24,14 @@ export class GetStaffsTool extends BaseTool {
     try {
       const response = await freispaceClient.get("/tools/analytics/get-staffs");
 
+      if (!response || !response.data) {
+        throw new Error("No data received from the API");
+      }
+
+      if (response.status !== 200) {
+        throw new Error(`Unexpected status code: ${response.status}`);
+      }
+
       return {
         content: [
           {

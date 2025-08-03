@@ -3,11 +3,12 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { GetStaffsTool } from "./tools/get-staffs.js";
+import { StaffsWorkedTogetherTool } from "./tools/staffs-worked-toghether.js";
 import { setupJsonConsole } from "./utils/console.js";
 
 setupJsonConsole();
 
-const VERSION = "0.0.46";
+const VERSION = "1.0.7";
 const server = new McpServer({
   name: "freispace",
   version: VERSION,
@@ -15,6 +16,7 @@ const server = new McpServer({
 
 // Register tools
 new GetStaffsTool().register(server);
+new StaffsWorkedTogetherTool().register(server);
 
 async function runServer() {
   const transport = new StdioServerTransport();
