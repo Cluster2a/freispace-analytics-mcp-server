@@ -6,6 +6,7 @@ import { CollaborationInsightsPrompt } from "./prompts/collaboration-insights.js
 import { ReportGenerationPrompt } from "./prompts/report-generation.js";
 import { StaffAnalysisPrompt } from "./prompts/staff-analysis.js";
 import { GetStaffsTool } from "./tools/get-staffs.js";
+import { StaffsHolidaysLeftTool } from "./tools/staffs-holidays-left.js";
 import { StaffsNextHolidaysTool } from "./tools/staffs-next-holidays.js";
 import { StaffsWorkedTogetherTool } from "./tools/staffs-worked-toghether.js";
 import { setupJsonConsole } from "./utils/console.js";
@@ -22,6 +23,7 @@ const server = new McpServer({
 new GetStaffsTool().register(server);
 new StaffsWorkedTogetherTool().register(server);
 new StaffsNextHolidaysTool().register(server);
+new StaffsHolidaysLeftTool().register(server);
 
 // Register prompts
 new StaffAnalysisPrompt().register(server);
