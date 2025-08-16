@@ -2,16 +2,17 @@
 
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
-import { GetStaffsTool } from "./tools/get-staffs.js";
-import { StaffsWorkedTogetherTool } from "./tools/staffs-worked-toghether.js";
-import { StaffAnalysisPrompt } from "./prompts/staff-analysis.js";
 import { CollaborationInsightsPrompt } from "./prompts/collaboration-insights.js";
 import { ReportGenerationPrompt } from "./prompts/report-generation.js";
+import { StaffAnalysisPrompt } from "./prompts/staff-analysis.js";
+import { GetStaffsTool } from "./tools/get-staffs.js";
+import { StaffsNextHolidaysTool } from "./tools/staffs-next-holidays.js";
+import { StaffsWorkedTogetherTool } from "./tools/staffs-worked-toghether.js";
 import { setupJsonConsole } from "./utils/console.js";
 
 setupJsonConsole();
 
-const VERSION = "1.0.9";
+const VERSION = "1.0.10";
 const server = new McpServer({
   name: "freispace",
   version: VERSION,
@@ -20,6 +21,7 @@ const server = new McpServer({
 // Register tools
 new GetStaffsTool().register(server);
 new StaffsWorkedTogetherTool().register(server);
+new StaffsNextHolidaysTool().register(server);
 
 // Register prompts
 new StaffAnalysisPrompt().register(server);
