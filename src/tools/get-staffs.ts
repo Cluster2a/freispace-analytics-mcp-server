@@ -41,7 +41,6 @@ export class GetStaffsTool extends BaseTool {
         throw new Error(`Unexpected status code: ${response.status}`);
       }
 
-      // Format the response for better readability
       const data = response.data as any[];
       let formattedText = `# Staff Directory\n\n`;
 
@@ -59,7 +58,6 @@ export class GetStaffsTool extends BaseTool {
           formattedText += `\n`;
         });
 
-        // Add summary by title/role
         const titleCounts = data.reduce((acc: any, staff: any) => {
           const title = staff.title || "No Title";
           acc[title] = (acc[title] || 0) + 1;

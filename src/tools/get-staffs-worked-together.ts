@@ -21,24 +21,24 @@ This is useful when you need to:
 Provide the staff member's name as input to get their complete collaboration profile.
 `;
 
-const staffWorkedTogetherSchema = z.object({
+const getStaffWorkedTogetherSchema = z.object({
   name: z
     .string()
     .describe("The name of the staff member to query collaboration data for"),
 });
 
-export class StaffsWorkedTogetherTool extends BaseTool {
+export class GetStaffsWorkedTogetherTool extends BaseTool {
   name = TOOL_NAME;
   description = TOOL_DESCRIPTION;
-  schema = staffWorkedTogetherSchema;
+  schema = getStaffWorkedTogetherSchema;
 
-  async execute(args?: z.infer<typeof staffWorkedTogetherSchema>) {
+  async execute(args?: z.infer<typeof getStaffWorkedTogetherSchema>) {
     try {
       if (!args?.name) {
         throw new Error("Staff name is required");
       }
 
-      const endpoint = `/tools/analytics/staffs-worked-together?name=${encodeURIComponent(args.name)}`;
+      const endpoint = `/tools/analytics/get-staffs-worked-together?name=${encodeURIComponent(args.name)}`;
 
       const response = await freispaceClient.get<any>(endpoint);
 
@@ -50,7 +50,6 @@ export class StaffsWorkedTogetherTool extends BaseTool {
         throw new Error(`Unexpected status code: ${response.status}`);
       }
 
-      // Format the response for better readability
       const data = response.data;
       let formattedText = `# Collaboration Report for ${data.target_staff?.display_name || args.name}\n\n`;
 

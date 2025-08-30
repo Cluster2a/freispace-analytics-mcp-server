@@ -24,7 +24,7 @@ This is useful when you need to:
 Optionally provide a staff member's name and/or year to get their specific holiday quota information.
 `;
 
-const staffHolidaysLeftSchema = z.object({
+const getStaffLeftHolidaysSchema = z.object({
   name: z
     .string()
     .optional()
@@ -39,14 +39,14 @@ const staffHolidaysLeftSchema = z.object({
     ),
 });
 
-export class StaffsHolidaysLeftTool extends BaseTool {
+export class GetStaffsLeftHolidaysTool extends BaseTool {
   name = TOOL_NAME;
   description = TOOL_DESCRIPTION;
-  schema = staffHolidaysLeftSchema;
+  schema = getStaffLeftHolidaysSchema;
 
-  async execute(args?: z.infer<typeof staffHolidaysLeftSchema>) {
+  async execute(args?: z.infer<typeof getStaffLeftHolidaysSchema>) {
     try {
-      let endpoint = "/tools/analytics/left-holidays";
+      let endpoint = "/tools/analytics/get-staffs-left-holidays";
       const queryParams = [];
 
       if (args?.year) {

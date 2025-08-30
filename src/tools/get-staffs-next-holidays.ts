@@ -22,7 +22,7 @@ This is useful when you need to:
 Optionally provide a staff member's name to get their specific holiday information.
 `;
 
-const staffNextHolidaysSchema = z.object({
+const getStaffNextHolidaysSchema = z.object({
   name: z
     .string()
     .optional()
@@ -31,14 +31,14 @@ const staffNextHolidaysSchema = z.object({
     ),
 });
 
-export class StaffsNextHolidaysTool extends BaseTool {
+export class GetStaffsNextHolidaysTool extends BaseTool {
   name = TOOL_NAME;
   description = TOOL_DESCRIPTION;
-  schema = staffNextHolidaysSchema;
+  schema = getStaffNextHolidaysSchema;
 
-  async execute(args?: z.infer<typeof staffNextHolidaysSchema>) {
+  async execute(args?: z.infer<typeof getStaffNextHolidaysSchema>) {
     try {
-      let endpoint = "/tools/analytics/next-holidays";
+      let endpoint = "/tools/analytics/get-staffs-next-holidays";
       if (args?.name) {
         endpoint += `?name=${encodeURIComponent(args.name)}`;
       }
